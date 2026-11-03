@@ -1,6 +1,7 @@
 from sklearn.model_selection import train_test_split
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
 
 # Reading the data
 df = pd.read_csv("Data/neo_v2.csv")
@@ -29,3 +30,8 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 # Training the model
 clf = DecisionTreeClassifier(random_state=42)
 clf.fit(X_train, y_train)
+
+# Testing the model
+y_pred = clf.predict(X_test)
+score = accuracy_score(y_test, y_pred)
+print(score)
