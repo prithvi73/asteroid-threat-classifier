@@ -35,3 +35,8 @@ clf.fit(X_train, y_train)
 y_pred = clf.predict(X_test)
 score = accuracy_score(y_test, y_pred)
 print(score)
+
+# Testing the model on data not in our testing data
+mystery_asteroid = pd.DataFrame([[1.5, 3.5, 85000.5, 1200000.0, 0, 15.2]], columns=X.columns)
+mystery_pred = clf.predict(mystery_asteroid)
+print(f"Threat detected (1=Hazardous, 0=Safe) : {mystery_pred}")
