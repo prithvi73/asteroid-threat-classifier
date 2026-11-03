@@ -1,5 +1,6 @@
 from sklearn.model_selection import train_test_split
 import pandas as pd
+from sklearn.tree import DecisionTreeClassifier
 
 # Reading the data
 df = pd.read_csv("Data/neo_v2.csv")
@@ -22,5 +23,9 @@ df["sentry_object"] = df["sentry_object"].astype(int)
 X = df[["est_diameter_min", "est_diameter_max", "relative_velocity", "miss_distance", "sentry_object", "absolute_magnitude"]]
 y = df["hazardous"]
 
-
+# Splitting the data
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Training the model
+clf = DecisionTreeClassifier(random_state=42)
+clf.fit(X_train, y_train)
