@@ -21,3 +21,6 @@ df["sentry_object"] = df["sentry_object"].astype(int)
 # Isoalting Features and Target Matrix
 X = df[["est_diameter_min", "est_diameter_max", "relative_velocity", "miss_distance", "sentry_object", "absolute_magnitude"]]
 y = df["hazardous"]
+
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
